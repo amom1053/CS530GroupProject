@@ -26,7 +26,7 @@ def typing_test():
     try:
         num_words = int(input("Provide length for typing test: "))
     except:
-        print("Invalid lenggth provided, will use default of 25 words.")
+        print("Invalid length provided, will use default of 25 words.")
         num_words = 25
     
     typing_test_string = generate_random_sentence(num_words)
@@ -41,7 +41,6 @@ def typing_test():
     end_time = time.time()
     
     time_taken = end_time - start_time
-    # words_per_minute = len(user_input.split()) / (time_taken / 60)
     words_per_minute = (len(user_input)/time_taken) / 5 * 60
     
     accuracy = calculate_accuracy(typing_test_string, user_input)
