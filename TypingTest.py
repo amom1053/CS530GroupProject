@@ -51,6 +51,12 @@ if __name__ == "__main__":
     print("Welcome to the Typing Test Program!")
     while True:
         typing_test()
-        play_again = input("Do you want to try another typing test? (yes/no): ").lower()
-        if play_again != "yes":
-            break
+        while True:
+            play_again = input("Do you want to try another typing test? (yes/no): ").lower()
+            if play_again == "no":
+                print("Thank you for using the Typing Test Program. Goodbye!")
+                exit()                                              # Exit the program if the user enters 'no'
+            elif play_again == "yes":
+                break                                               # Exit the inner while-loop if the user enters 'yes'
+            else:
+                print("Invalid input. Please enter 'yes' or 'no'.") # Asks the question again
