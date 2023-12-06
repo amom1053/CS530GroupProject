@@ -7,6 +7,7 @@ class TypingTest:
         self._accuracy = None # instantiate accuracy score
         self.num_words = num_words
         self.typing_test_string = self._generate_random_sentence(self.num_words)
+        self.test_statistics = TestStats.TestStats()
     
     # Private helper class to generate sentence based on the num_words input
     def _generate_random_sentence(self, num_words):
@@ -33,7 +34,7 @@ class TypingTest:
         return self.typing_test_string
     
     # Begin typing test
-    def begin_typing_test(self) -> TestStats:
+    def begin_typing_test(self):
         # Need to move this outside the class
         start_time = time.time()
         user_input = input()
@@ -42,11 +43,11 @@ class TypingTest:
         # words_per_minute = len(user_input.split()) / (time_taken / 60)
         words_per_minute = (len(user_input)/time_taken) / 5 * 60
         
-        test_statistics = TestStats.TestStats()
-        test_statistics.setTimeTaken(time_taken).setWPM(words_per_minute).setAccuracy(self._calculate_accuracy(self.typing_test_string, user_input))
         
-        return test_statistics
-
+        self.test_statistics.setTimeTaken(time_taken).setWPM(words_per_minute).setAccuracy(self._calculate_accuracy(self.typing_test_string, user_input))
+        
+    def getTestStats(self) -> TestStats:
+        return self.test_statistics
     
 # if __name__ == "__main__":
 #     print("Welcome to the Typing Test Program!")
