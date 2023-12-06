@@ -9,7 +9,7 @@ fingerDetectionInstance = FingerDetection.FingerDetection(0.15)
 fingerDetectionInstance.startVideoCapture()
 typingtest_instance = TypingTest.TypingTest(num_words)
 
-def typingTestThread():
+def typingTestThreadFunc():
   print("typingtestthreadworking")
   typingtest_instance.begin_typing_test()
   
@@ -23,7 +23,7 @@ def main():
   
   # Begin threads for typing test and opencv finger detection
   opencvThread = threading.Thread(target=fingerDetectionThread)
-  typingTestThread = threading.Thread(target=typingTestThread)
+  typingTestThread = threading.Thread(target=typingTestThreadFunc)
   typingTestThread.start()
   opencvThread.start()
   
