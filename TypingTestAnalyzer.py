@@ -22,14 +22,15 @@ def main():
   input("\nPress enter to begin timer and enter when finished: ")
   
   # Begin threads for typing test and opencv finger detection
+  fingerDetectionThread()
   opencvThread = threading.Thread(target=fingerDetectionThread)
   typingTestThread = threading.Thread(target=typingTestThreadFunc)
   typingTestThread.start()
-  opencvThread.start()
+  # opencvThread.start()
   
   # Wait for threads to finish before grabbing the data
   typingTestThread.join()
-  opencvThread.join()
+  # opencvThread.join()
   test_stats = typingtest_instance.getTestStats()
   dataList = fingerDetectionInstance.getData()
   
