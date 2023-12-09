@@ -1,6 +1,5 @@
-# Main class i guess
+# Main class
 import TypingTest
-import TestStats
 import FingerDetection
 import threading
 
@@ -9,38 +8,39 @@ fingerDetectionInstance = FingerDetection.FingerDetection(0.15)
 fingerDetectionInstance.startVideoCapture()
 typingtest_instance = TypingTest.TypingTest(num_words)
 
+
 def typingTestThreadFunc():
-  print("typingtestthreadworking")
-  typingtest_instance.begin_typing_test()
-  
+    typingtest_instance.begin_typing_test()
+
+
 def fingerDetectionThread():
-  fingerDetectionInstance.startGrabbingData()
+    fingerDetectionInstance.startGrabbingData()
+
 
 def main():
-  print("Type the following text:")
-  print(typingtest_instance.get_typing_test_string())
-  input("\nPress enter to begin timer and enter when finished: ")
-  
-  # Begin threads for typing test and opencv finger detection
-  opencvThread = threading.Thread(target=fingerDetectionThread)
-  typingTestThread = threading.Thread(target=typingTestThreadFunc)
-  typingTestThread.start()
-  opencvThread.start()
-  
-  # Wait for threads to finish before grabbing the data
-  typingTestThread.join()
-  opencvThread.join()
-  test_stats = typingtest_instance.getTestStats()
-  dataList = fingerDetectionInstance.getData()
-  
+    print("Type the following text:")
+    print(typingtest_instance.get_typing_test_string())
+    input("\nPress enter to begin timer and enter when finished: ")
 
-  print(test_stats.getWPM())
-  print(test_stats.getAccuracy())
-  print(test_stats.getTimeTaken())
-  print("Total movement:")
-  print(len(dataList))
+    # Begin threads for typing test and opencv finger detection
+    opencvThread = threading.Thread(target=fingerDetectionThread)
+    typingTestThread = threading.Thread(target=typingTestThreadFunc)
+    typingTestThread.start()
+    opencvThread.start()
+
+    # Wait for threads to finish before grabbing the data
+    typingTestThread.join()
+    opencvThread.join()
+    test_stats = typingtest_instance.getTestStats()
+    dataList = fingerDetectionInstance.getData()
+
+    # Prints out data gather from the test
+    print("Words Per Minute: " + str(test_stats.getWPM()))
+    print("Accuracy: " + str(test_stats.getAccuracy()))
+    print("Time Taken: " + str(test_stats.getTimeTaken()))
+    print("Total Number of Movements: " + str(len(dataList)))
+    print("Recommended Number of Movements: " + str(len(typingtest_instance.get_typing_test_string())))
 
 
 main()
-  
     

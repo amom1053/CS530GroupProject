@@ -1,6 +1,5 @@
 import cv2
 import mediapipe as mp
-import TestStats
 import keyboard
 
 class FingerDetection:
@@ -63,7 +62,6 @@ class FingerDetection:
                             distance_moved = (dx ** 2 + dy ** 2) ** 0.5
 
                             if distance_moved > self.movement_threshold:
-                                print(f"Hand {hand_index + 1}, Finger {index_to_finger.get(finger_tip_index)} moved")
                                 self.movementList.append((hand_index + 1, index_to_finger.get(finger_tip_index)))
 
                         prev_tips[hand_index][finger_tip_index] = finger_tip
