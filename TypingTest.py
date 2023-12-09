@@ -33,6 +33,7 @@ class TypingTest:
     def get_typing_test_string(self) -> str:
         return self.typing_test_string
     
+
     # Begin typing test
     def begin_typing_test(self):
         # Need to move this outside the class
@@ -48,11 +49,4 @@ class TypingTest:
         
     def getTestStats(self) -> TestStats:
         return self.test_statistics
-    
-# if __name__ == "__main__":
-#     print("Welcome to the Typing Test Program!")
-#     while True:
-#         typing_test()
-#         play_again = input("Do you want to try another typing test? (yes/no): ").lower()
-#         if play_again != "yes":
-#             break
+
