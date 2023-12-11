@@ -1,4 +1,5 @@
 # TypingTestAnalyzer.py - README
+## By  Angelina Mom, Fernando Magallon-Romero, John Paul Minimo
 ## Overview
 TypingTestAnalyzer.py is a Python script designed for analyzing typing tests. It leverages opencv2 and mediapipe for its operations, and has 3 other files that are needed to run properly, FingerDetection.py, TestStats.py, and TypingTest.py.
 Prerequisites
