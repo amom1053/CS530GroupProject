@@ -6,20 +6,20 @@ Prerequisites
 Python 3.x
 Pip (Python package installer)
 
-##Source Code Structure
-###TypingTestAnalyzer.py
+## Source Code Structure
+### TypingTestAnalyzer.py
 This acts as our main file, which the user calls to begin the typing test and finger detection. It creats instances of both the typing test and finger detection.
 
-##TypingTest.py
+## TypingTest.py
 This is our typing test class. Create an instance of the typing test by calling the constructor with the amount of words you would want on the test. Has get_typing_test_string() to retrieve a str of the typing test.
 
 begin_typing_test() to start typing test.
 getTestSTats() to retrieve TestStats object after typing test is completed.
 
-###TestStats.py
+### TestStats.py
 This is a plain old object which just contains statistics. Has setters and getters for WPM, Accuracy, and TimeTaken.
 
-###FingerDetection.py
+### FingerDetection.py
 Calling the constructor for FingerDetection() creates an instance and starts preparing opencv resources. Adding an optional float argument changes the sensitivity of what counts as a movement.
 
 startVideoCapture(camIndex=0) prepares webcam to start capturing video. Change camIndex to 1 if you have a second webcam.
